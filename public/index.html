@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kare - Login</title>
+    <link rel="stylesheet" href="style.css"> <!-- Ensure this path is correct -->
+</head>
+<body>
+    <div class="login-container">
+        <h2>Welcome to Kare</h2>
+        <form id="loginForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script>
+        // JavaScript to handle form submission and redirection
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+
+            // Validate that the user entered both name and a valid 10-digit phone number
+            if (name && phone.match(/^[0-9]{10}$/)) {
+                // Redirect to the products page after successful login
+                window.location.href = "product.html"; // Redirect to the product page
+            } else {
+                // Show an error message if validation fails
+                document.getElementById("message").textContent = 'Please enter a valid name and phone number.';
+            }
+        });
+    </script>
+</body>
+</html>
